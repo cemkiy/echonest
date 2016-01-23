@@ -1,2 +1,2 @@
-# go-musicsearch
-search music and artist
+# echonest
+Golang wrapper for EchoNest API.

@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 
-	"github.com/ahmet/go-musicsearch/utils"
+	"github.com/cemkiy/echonest/utils"
 	"github.com/parnurzeal/gorequest"
 )
 
