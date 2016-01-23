@@ -3,15 +3,27 @@ package main
 import "fmt"
 
 func main() {
-	artists, err := FindArtist("radiohead")
+	artistsByName, err := FindArtistByName("radiohead")
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(*artists)
+	fmt.Println(*artistsByName)
 
-	songs, err := FindSong("Mother")
+	artistsByGenre, err := FindArtistByGenre("jazz")
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(*songs)
+	fmt.Println(*artistsByGenre)
+
+	songsByName, err := FindSongByName("Mother")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(*songsByName)
+
+	songsByMood, err := FindSongByMood("happy")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(*songsByMood)
 }
