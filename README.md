@@ -11,9 +11,15 @@ $ go get github.com/cemkiy/echonest
 ## Run Example
 
 ```sh
-$ go run *.go
+$ go build && ./echonest
 ```
 
 ## Usage
 
 Look at example.go
+
+## Testing
+
+```sh
+$ go test
+```
