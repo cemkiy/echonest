@@ -7,21 +7,25 @@ import (
 )
 
 func TestFindArtistByName(t *testing.T) {
-	_, err := FindArtistByName("radiohead")
+	artistsByName, err := FindArtistByName("radiohead", "1")
 	require.Nil(t, err)
+	require.Equal(t, len(*artistsByName), 1)
 }
 
 func TestFindArtistByGenre(t *testing.T) {
-	_, err := FindArtistByGenre("jazz")
+	artistsByGenre, err := FindArtistByGenre("jazz", "1")
 	require.Nil(t, err)
+	require.Equal(t, len(*artistsByGenre), 1)
 }
 
 func TestFindSongByName(t *testing.T) {
-	_, err := FindArtistByName("radiohead")
+	songsByName, err := FindArtistByName("radiohead", "1")
 	require.Nil(t, err)
+	require.Equal(t, len(*songsByName), 1)
 }
 
 func TestFindSongByMood(t *testing.T) {
-	_, err := FindSongByMood("happy")
+	songsByMood, err := FindSongByMood("happy", "1")
 	require.Nil(t, err)
+	require.Equal(t, len(*songsByMood), 1)
 }

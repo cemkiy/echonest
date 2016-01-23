@@ -21,12 +21,13 @@ type ArtistsResponse struct {
 }
 
 // FindArtistByName retrieves artists related to given name
-func FindArtistByName(name string) (*[]Artist, error) {
+func FindArtistByName(name string, results string) (*[]Artist, error) {
 	response := ArtistsResponse{}
 	request := gorequest.New()
 	_, bodyBytes, _ := request.Get(utils.APIURL + utils.APIARTISTSEARCH).
 		Query("api_key=" + utils.APIKEY).
 		Query("name=" + name).
+		Query("results=" + results).
 		Query("format=json").
 		EndBytes()
 
@@ -38,12 +39,13 @@ func FindArtistByName(name string) (*[]Artist, error) {
 }
 
 // FindArtistByGenre retrieves artists related to given genre
-func FindArtistByGenre(genre string) (*[]Artist, error) {
+func FindArtistByGenre(genre string, results string) (*[]Artist, error) {
 	response := ArtistsResponse{}
 	request := gorequest.New()
 	_, bodyBytes, _ := request.Get(utils.APIURL + utils.APIARTISTSEARCH).
 		Query("api_key=" + utils.APIKEY).
 		Query("genre=" + genre).
+		Query("results=" + results).
 		Query("format=json").
 		EndBytes()
 
@@ -70,7 +72,7 @@ type SongsResponse struct {
 }
 
 // FindSongByName retrieves songs related to given name
-func FindSongByName(title string) (*[]Song, error) {
+func FindSongByName(title string, results string) (*[]Song, error) {
 	response := SongsResponse{}
 	request := gorequest.New()
 	_, bodyBytes, _ := request.Get(utils.APIURL + utils.APISONGSEARCH).
@@ -87,12 +89,13 @@ func FindSongByName(title string) (*[]Song, error) {
 }
 
 // FindSongByMood retrieves songs related to given name
-func FindSongByMood(mood string) (*[]Song, error) {
+func FindSongByMood(mood string, results string) (*[]Song, error) {
 	response := SongsResponse{}
 	request := gorequest.New()
 	_, bodyBytes, _ := request.Get(utils.APIURL + utils.APISONGSEARCH).
 		Query("api_key=" + utils.APIKEY).
 		Query("mood=" + mood).
+		Query("results=" + results).
 		Query("format=json").
 		EndBytes()
 
