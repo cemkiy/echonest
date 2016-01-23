@@ -20,8 +20,8 @@ type ArtistsResponse struct {
 	} `json:"response"`
 }
 
-// ArtistsByName retrieves artists related to given name
-func ArtistsByName(name string) (*[]Artist, error) {
+// FindArtist retrieves artists related to given name
+func FindArtist(name string) (*[]Artist, error) {
 	response := ArtistsResponse{}
 	request := gorequest.New()
 	_, bodyBytes, _ := request.Get(utils.APIURL + utils.APIARTISTSEARCH).
@@ -35,4 +35,36 @@ func ArtistsByName(name string) (*[]Artist, error) {
 	}
 
 	return &response.Response.Artists, nil
+}
+
+// Song json struct
+type Song struct {
+	ID         string `json:"id"`
+	Title      string `json:"title"`
+	ArtistID   string `json:"artist_id"`
+	ArtistName string `json:"artist_name"`
+}
+
+// SongsResponse envelope struct
+type SongsResponse struct {
+	Response struct {
+		Songs []Song `json:"songs"`
+	} `json:"response"`
+}
+
+// FindSong retrieves songs related to given name
+func FindSong(title string) (*[]Song, error) {
+	response := SongsResponse{}
+	request := gorequest.New()
+	_, bodyBytes, _ := request.Get(utils.APIURL + utils.APISONGSEARCH).
+		Query("api_key=" + utils.APIKEY).
+		Query("title=" + title).
+		Query("format=json").
+		EndBytes()
+
+	if err := json.Unmarshal(bodyBytes, &response); err != nil {
+		return nil, err
+	}
+
+	return &response.Response.Songs, nil
 }
